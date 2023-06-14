@@ -1,5 +1,11 @@
-import './index.scss';
-import { Routing } from '@/pages';
-import { withProviders } from '@/app/providers';
+import { Layout } from '@/components';
+import './index.css';
+import { Routing } from '@/pages/route';
 
-export const App = withProviders((): JSX.Element => <Routing />);
+export const App = () => {
+  return (
+    <Layout>
+      <Routing />
+    </Layout>
+  );
+};
