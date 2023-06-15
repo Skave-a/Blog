@@ -1,1 +1,1 @@
-export * from './PopularPosts';
+export * from "./PopularPosts";

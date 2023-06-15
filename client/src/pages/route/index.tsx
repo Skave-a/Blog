@@ -1,5 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
-import { AddPost, Edit, Login, Main, Post, Posts, Register } from '@/pages';
+import { Route, Routes } from "react-router-dom";
+import { AddPost, Edit, Login, Main, Post, Posts, Register } from "@/pages";
 
 export const Routing = () => {
   return (

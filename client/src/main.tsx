@@ -1,8 +1,8 @@
-import { createRoot } from 'react-dom/client';
-import { App } from '@/app';
-import { BrowserRouter } from 'react-router-dom';
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { App } from "./App";
 
-createRoot(document.getElementById('root') as HTMLElement).render(
+createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
     <App />
   </BrowserRouter>
