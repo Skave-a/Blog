@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "format": "prettier --write ./"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,8 @@
     "mongoose": "^6.4.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "eslint": "^8.42.0",
+    "nodemon": "^2.0.19",
+    "prettier": "2.8.8"
   }
 }
