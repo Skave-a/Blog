@@ -1,4 +1,8 @@
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import { checkIsAuth, logout } from "@/redux/slices/authSlice";
+import { useAppDispatch } from "@/redux/store";
+import { toast } from "react-toastify";
 
 const MENU = [
   {
@@ -19,9 +23,14 @@ export const Navbar = () => {
   const activeStyle = {
     color: "#000000",
   };
-
-  const isAuth = false;
-  const logoutHandler = () => {};
+  const dispatch = useAppDispatch();
+  const isAuth = useSelector(checkIsAuth);
+  const logoutHandler = () => {
+    localStorage.removeItem("token");
+    // window.location.reload();
+    dispatch(logout());
+    toast("Вы вышли из аккаунта");
+  };
 
   return (
     <div className="flex py-4 justify-between items-center">

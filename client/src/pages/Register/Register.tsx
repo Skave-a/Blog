@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { registerUser } from "@/redux/slices/authSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { checkIsAuth, registerUser } from "@/redux/slices/authSlice";
 import { toast } from "react-toastify";
 import { RootState, useAppDispatch } from "@/redux/store";
 
@@ -9,20 +9,17 @@ export const Register = () => {
   const [usermail, setUsermail] = useState("");
   const [password, setPassword] = useState("");
   const { status } = useSelector((state: RootState) => state.auth);
-  // const isAuth = useSelector(checkIsAuth)
+  const isAuth = useSelector(checkIsAuth);
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (status) {
       toast(status);
     }
-    // if (isAuth) navigate('/')
-  }, [
-    status,
-    // isAuth, navigate
-  ]);
+    if (isAuth) navigate("/");
+  }, [status, isAuth, navigate]);
 
   const handleSubmit = () => {
     try {
