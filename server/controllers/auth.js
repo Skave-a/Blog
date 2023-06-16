@@ -5,13 +5,13 @@ import jwt from 'jsonwebtoken'
 // Register user
 export const register = async (req, res) => {
     try {
-        const { username, password } = req.body
+        const { usermail, password } = req.body
 
-        const isUsed = await User.findOne({ username })
+        const isUsed = await User.findOne({ usermail })
 
         if (isUsed) {
             return res.json({
-                message: 'Данный username уже занят.',
+                message: 'Данный usermail уже занят.',
             })
         }
 
@@ -19,7 +19,7 @@ export const register = async (req, res) => {
         const hash = bcrypt.hashSync(password, salt);
 
         const newUser = new User({
-            username,
+            usermail,
             password: hash,
         })
 
@@ -46,8 +46,8 @@ export const register = async (req, res) => {
 // Login user
 export const login = async (req, res) => {
     try {
-        const { username, password } = req.body
-        const user = await User.findOne({ username })
+        const { usermail, password } = req.body
+        const user = await User.findOne({ usermail })
 
         if (!user) {
             return res.json({

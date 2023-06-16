@@ -16,7 +16,7 @@ export const createPost = async (req, res) => {
             req.files.image.mv(path.join(__dirname, '..', 'uploads', fileName))
 
             const newPostWithImage = new Post({
-                username: user.username,
+                usermail: user.usermail,
                 title,
                 text,
                 imgUrl: fileName,
@@ -32,7 +32,7 @@ export const createPost = async (req, res) => {
         }
 
         const newPostWithoutImage = new Post({
-            username: user.username,
+            usermail: user.usermail,
             title,
             text,
             imgUrl: '',

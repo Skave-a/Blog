@@ -20,7 +20,7 @@ export const Navbar = () => {
     color: "#000000",
   };
 
-  const isAuth = true;
+  const isAuth = false;
   const logoutHandler = () => {};
 
   return (
@@ -43,7 +43,7 @@ export const Navbar = () => {
           ))}
         </ul>
       )}
-      <div className="flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm px-4 py-2">
+      <div className="bg-indigo-500 text-white py-2 text-sm px-3 rounded focus:outline-none">
         {isAuth ? (
           <button onClick={logoutHandler}>Выйти</button>
         ) : (

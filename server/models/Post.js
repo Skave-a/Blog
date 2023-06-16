@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const PostSchema = new mongoose.Schema(
     {
-        username: { type: String },
+        usermail: { type: String },
         title: { type: String, required: true },
         text: { type: String, required: true },
         imgUrl: { type: String, default: '' },
