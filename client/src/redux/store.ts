@@ -1,17 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice, { AuthState } from "@/redux/slices/authSlice";
 import { useDispatch } from "react-redux";
+import postSlice, { PostState } from "./slices/postSlice";
 
 export interface RootState {
   auth: AuthState;
-  // post: PostState;
+  post: PostState;
   // comment: CommentState;
 }
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
-    // post: postSlice,
+    post: postSlice,
     // comment: commentSlice,
   },
 });

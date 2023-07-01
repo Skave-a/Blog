@@ -49,7 +49,7 @@ export const createPost = async (req, res) => {
 };
 
 // Get All Posts
-export const getAll = async (req, res) => {
+export const getAll = async (_, res) => {
   try {
     const posts = await Post.find().sort('-createdAt');
     const popularPosts = await Post.find().limit(5).sort('-views');
