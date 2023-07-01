@@ -5,11 +5,19 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "../../utiles/axios";
 
-interface Post {
-  id: string;
-  title: string;
+export type Post = {
+  author: string;
+  comments: string[];
+  createdAt: string;
+  imgUrl: string;
   text: string;
-}
+  title: string;
+  updatedAt: string;
+  usermail: string;
+  views: number;
+  __v: number;
+  _id: string;
+};
 
 export interface PostState {
   posts: Post[];

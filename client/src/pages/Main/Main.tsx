@@ -2,12 +2,11 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "@/redux/store";
 import { useEffect } from "react";
 import { getAllPosts } from "@/redux/slices/postSlice";
+import { PopularPosts, PostItem } from "@/components";
 
 export const Main = () => {
   const dispatch = useAppDispatch();
   const { posts, popularPosts } = useSelector((state: RootState) => state.post);
-
-  console.log(popularPosts);
 
   useEffect(() => {
     dispatch(getAllPosts());
@@ -23,7 +22,20 @@ export const Main = () => {
 
   return (
     <div className="max-w-[900px] mx-auto py-10">
-      <div className="flex justify-between gap-8"></div>
+      <div className="flex justify-between gap-8">
+        <div className="flex flex-col gap-10 basis-4/5">
+          {posts?.map((post) => (
+            <PostItem key={post._id} post={post} />
+          ))}
+        </div>
+        <div className="basis-1/5">
+          <div className="text-xs uppercase text-white">Популярное:</div>
+
+          {popularPosts?.map((post) => (
+            <PopularPosts key={post._id} post={post} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
