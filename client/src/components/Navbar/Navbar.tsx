@@ -27,7 +27,7 @@ export const Navbar = () => {
   const isAuth = useSelector(checkIsAuth);
   const logoutHandler = () => {
     localStorage.removeItem("token");
-    // window.location.reload();
+    window.location.reload();
     dispatch(logout());
     toast("Вы вышли из аккаунта");
   };

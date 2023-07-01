@@ -12,25 +12,19 @@ import axios from "@/utiles/axios";
 import { formatDate } from "@/utiles/formateDate";
 import { removePost, Post as typePost } from "@/redux/slices/postSlice";
 import { toast } from "react-toastify";
-
-// import axios from '@/utils/axios'
-// import { removePost } from '../redux/features/post/postSlice'
-// import {
-//     createComment,
-//     getPostComments,
-// } from '../redux/features/comment/commentSlice'
-// import { CommentItem } from '../components/CommentItem'
+import { createComment, getPostComments } from "@/redux/slices/commentSlice";
+import { CommentItem } from "@/components";
 
 export const Post = () => {
   const [post, setPost] = useState<typePost | null>(null);
   const [comment, setComment] = useState("");
 
   const { user } = useSelector((state: RootState) => state.auth);
-  // const { comments } = useSelector((state: RootState) => state.comment)
+  const { comments } = useSelector((state: RootState) => state.comment);
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useAppDispatch();
-
+  console.log("comments", comments);
   const removePostHandler = () => {
     try {
       params.id ? dispatch(removePost(params.id)) : null;
@@ -41,23 +35,27 @@ export const Post = () => {
     }
   };
 
-  // const handleSubmit = () => {
-  //     try {
-  //         const postId = params.id
-  //         dispatch(createComment({ postId, comment }))
-  //         setComment('')
-  //     } catch (error) {
-  //         console.log(error)
-  //     }
-  // }
+  const handleSubmit = () => {
+    try {
+      if (params.id) {
+        const postId = params.id;
+        dispatch(createComment({ postId, comment }));
+        setComment("");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // const fetchComments = useCallback(async () => {
-  //     try {
-  //         dispatch(getPostComments(params.id))
-  //     } catch (error) {
-  //         console.log(error)
-  //     }
-  // }, [params.id, dispatch])
+  const fetchComments = useCallback(async () => {
+    try {
+      if (params.id) {
+        dispatch(getPostComments(params.id));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [params.id, dispatch]);
 
   const fetchPost = useCallback(async () => {
     const { data } = await axios.get(`/posts/${params.id}`);
@@ -68,9 +66,9 @@ export const Post = () => {
     fetchPost();
   }, [fetchPost]);
 
-  // useEffect(() => {
-  //     fetchComments()
-  // }, [fetchComments])
+  useEffect(() => {
+    fetchComments();
+  }, [fetchComments]);
 
   if (!post) {
     return (
@@ -111,7 +109,9 @@ export const Post = () => {
             </div>
           </div>
           <div className="text-blue text-xl">{post.title}</div>
-          <p className="text-blue opacity-60 text-xs pt-4">{post.text}</p>
+          <p className="text-blue opacity-60 text-xs pt-4 line-clamp-3">
+            {post.text}
+          </p>
 
           <div className="flex gap-3 items-center mt-2 justify-between">
             <div className="flex gap-3 mt-4">
@@ -151,16 +151,16 @@ export const Post = () => {
             />
             <button
               type="submit"
-              // onClick={handleSubmit}
+              onClick={handleSubmit}
               className="flex justify-center items-center bg-gray-600 text-xs text-blue rounded-sm py-2 px-4"
             >
               Отправить
             </button>
           </form>
 
-          {/* {comments?.map((cmt) => (
+          {comments?.map((cmt) => (
             <CommentItem key={cmt._id} cmt={cmt} />
-          ))} */}
+          ))}
         </div>
       </div>
     </div>
