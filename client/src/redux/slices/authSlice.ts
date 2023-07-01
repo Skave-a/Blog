@@ -3,7 +3,7 @@ import axios from "@/utiles/axios";
 import { RootState } from "@/redux/store";
 
 export interface AuthState {
-  user: string | null;
+  user: User | null | string;
   token: string | null;
   isLoading: boolean;
   status: string | null;
@@ -29,6 +29,16 @@ interface RegisterUserArgs {
 interface LoginUserArgs {
   usermail: string;
   password: string;
+}
+
+export interface User {
+  createdAt: string;
+  password: string;
+  posts: string[];
+  updatedAt: string;
+  usermail: string;
+  __v: number;
+  _id: string;
 }
 
 export interface AuthPayload {
