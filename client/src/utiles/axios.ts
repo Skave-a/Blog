@@ -1,8 +1,10 @@
 import axios from "axios";
 
+// export const baseURL = "http://localhost:3002";
+export const baseURL = "https://blog-three-eta-22.vercel.app";
+
 const instance = axios.create({
-  // baseURL: "http://localhost:3002/api",
-  baseURL: "https://blog-three-eta-22.vercel.app/api",
+  baseURL: `${baseURL}/api`,
 
 });
 

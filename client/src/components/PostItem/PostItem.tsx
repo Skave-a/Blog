@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Post } from "@/redux/slices/postSlice";
 import { AiFillEye, AiOutlineMessage } from "react-icons/ai";
-import { formatDate } from "../../utiles/formateDate";
+import { formatDate } from "@/utiles/formateDate";
+import { baseURL } from "@/utiles/axios";
 
 export const PostItem: React.FC<{ post: Post }> = ({ post }) => {
   if (!post) {
@@ -17,7 +18,7 @@ export const PostItem: React.FC<{ post: Post }> = ({ post }) => {
         >
           {post.imgUrl && (
             <img
-              src={`http://localhost:3002/${post.imgUrl}`}
+              src={`${baseURL}/${post.imgUrl}`}
               alt="img"
               className="object-cover w-full"
             />

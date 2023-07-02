@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RootState, useAppDispatch } from "@/redux/store";
-import axios from "@/utiles/axios";
+import axios, { baseURL } from "@/utiles/axios";
 import { formatDate } from "@/utiles/formateDate";
 import { removePost, Post as typePost } from "@/redux/slices/postSlice";
 import { toast } from "react-toastify";
@@ -94,7 +94,7 @@ export const Post = () => {
             >
               {post?.imgUrl && (
                 <img
-                  src={`http://localhost:3002/${post.imgUrl}`}
+                  src={`${baseURL}/${post.imgUrl}`}
                   alt="img"
                   className="object-cover w-full"
                 />

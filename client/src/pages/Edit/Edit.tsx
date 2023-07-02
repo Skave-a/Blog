@@ -6,7 +6,7 @@ import {
   FormEvent,
 } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "@/utiles/axios";
+import axios, { baseURL } from "@/utiles/axios";
 import { ExtendedFormData, updatePost } from "@/redux/slices/postSlice";
 import { useAppDispatch } from "@/redux/store";
 
@@ -70,7 +70,7 @@ export const Edit = () => {
       </label>
       <div className="flex object-cover py-2">
         {oldImage && (
-          <img src={`http://localhost:3002/${oldImage}`} alt={oldImage} />
+          <img src={`${baseURL}/${oldImage}`} alt={oldImage} />
         )}
         {newImage && (
           <img src={URL.createObjectURL(newImage)} alt={newImage.name} />
