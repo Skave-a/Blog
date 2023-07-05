@@ -3,10 +3,10 @@ import { PostItem } from "@/components";
 import axios from "@/utiles/axios";
 import { Post } from "@/redux/slices/postSlice";
 
-const Posts = () => {
+const Posts = (): JSX.Element => {
   const [posts, setPosts] = useState<Post[]>([]);
 
-  const fetchMyPosts = async () => {
+  const fetchMyPosts = async (): Promise<void> => {
     try {
       const { data } = await axios.get("/posts/user/me");
       setPosts(data);

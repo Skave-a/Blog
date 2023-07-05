@@ -1,9 +1,14 @@
-import { ElementType, Suspense } from "react";
-import { FullPageWrapper } from "@/shared/ui/fullPageWrapper/FullPageWrapper";
-import { Spinner } from "@/shared/ui/spinner";
+import React, { ElementType, Suspense } from "react";
+import { FullPageWrapper, Spinner } from "@/shared/ui";
 
-export const Loadable = (Component: ElementType) =>
-  function fn(props: any) {
+type Props = {
+  [key: string]: {};
+};
+
+type LoadableComponent = React.FC<Props>;
+
+export const Loadable = (Component: ElementType): LoadableComponent =>
+  function LoadableComponentWrapper(props: Props) {
     return (
       <Suspense
         fallback={

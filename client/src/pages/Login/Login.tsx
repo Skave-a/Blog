@@ -5,9 +5,9 @@ import { toast } from "react-toastify";
 import { RootState, useAppDispatch } from "@/redux/store";
 import { checkIsAuth, loginUser } from "@/redux/slices/authSlice";
 
-const Login = () => {
-  const [usermail, setUsermail] = useState("");
-  const [password, setPassword] = useState("");
+const Login = (): JSX.Element => {
+  const [usermail, setUsermail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const { status } = useSelector((state: RootState) => state.auth);
   const isAuth = useSelector(checkIsAuth);
@@ -19,7 +19,7 @@ const Login = () => {
     if (isAuth.auth) navigate("/");
   }, [status, isAuth, navigate]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     try {
       dispatch(loginUser({ usermail, password }));
     } catch (error) {

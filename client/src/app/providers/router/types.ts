@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export type RouteConfig = {
   uuid: string;
   path: string;
@@ -9,3 +11,9 @@ export const enum AccessMode {
   LoggedIn,
   Guest,
 }
+
+export type ProtectedRouteProps = {
+  children: ReactElement;
+  mode: AccessMode;
+  redirectTo?: string;
+};

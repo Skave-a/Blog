@@ -19,13 +19,13 @@ const MENU = [
   },
 ];
 
-export const Navbar = () => {
+export const Navbar = (): JSX.Element => {
   const activeStyle = {
     color: "#000000",
   };
   const dispatch = useAppDispatch();
   const isAuth = useSelector(checkIsAuth);
-  const logoutHandler = () => {
+  const logoutHandler = (): void => {
     localStorage.removeItem("token");
     window.location.reload();
     dispatch(logout());

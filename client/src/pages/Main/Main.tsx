@@ -5,7 +5,7 @@ import { getAllPosts } from "@/redux/slices/postSlice";
 import { PopularPosts, PostItem } from "@/components";
 import { checkIsAuth } from "@/redux/slices/authSlice";
 
-const Main = () => {
+const Main = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { posts, popularPosts } = useSelector((state: RootState) => state.post);
   const isAuth = useSelector(checkIsAuth);

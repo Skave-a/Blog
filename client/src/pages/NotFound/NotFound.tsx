@@ -1,5 +1,4 @@
-
-const NotFound = () => {
+const NotFound = (): JSX.Element => {
   return <div>NotFound</div>;
 };
 

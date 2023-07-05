@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { getMe } from "@/redux/slices/authSlice";
 import AppRouter from "@/app/providers/router/ui/AppRouter";
 
-export const App = () => {
+const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -32,3 +32,5 @@ export const App = () => {
     </Layout>
   );
 };
+
+export default App;

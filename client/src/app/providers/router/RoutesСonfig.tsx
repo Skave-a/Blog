@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { Navigate } from "react-router-dom";
 import { AccessMode, RouteConfig } from "./types";
 import {
   AddPost,
@@ -11,7 +12,6 @@ import {
   Posts,
 } from "./LazyPages";
 import { ProtectedRoute } from "./ProtectedRoute";
-import { Navigate } from "react-router-dom";
 
 export const defaultRoutes: RouteConfig[] = [
   {

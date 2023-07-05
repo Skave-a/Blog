@@ -1,12 +1,11 @@
-// import { routeConfig } from '@/features/router/components/routeConfig';
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { defaultRoutes } from "../RoutesСonfig";
-import { Spinner } from "@/shared/ui/spinner";
+import { Spinner } from "@/shared/ui";
 
-const AppRouter = () => {
+const AppRouter: React.FC = (): JSX.Element => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Spinner />}>
       <Routes>
         {defaultRoutes.map(({ element, path }) => (
           <Route

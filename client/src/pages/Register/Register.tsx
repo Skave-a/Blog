@@ -5,7 +5,7 @@ import { checkIsAuth, registerUser } from "@/redux/slices/authSlice";
 import { toast } from "react-toastify";
 import { RootState, useAppDispatch } from "@/redux/store";
 
-const Register = () => {
+const Register = (): JSX.Element => {
   const [usermail, setUsermail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { status } = useSelector((state: RootState) => state.auth);
@@ -21,7 +21,7 @@ const Register = () => {
     if (isAuth.auth) navigate("/");
   }, [status, isAuth, navigate]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     try {
       dispatch(registerUser({ usermail, password }));
       setPassword("");

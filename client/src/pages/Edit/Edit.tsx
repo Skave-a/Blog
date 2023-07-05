@@ -10,10 +10,10 @@ import axios, { baseURL } from "@/utiles/axios";
 import { ExtendedFormData, updatePost } from "@/redux/slices/postSlice";
 import { useAppDispatch } from "@/redux/store";
 
-const Edit = () => {
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
-  const [oldImage, setOldImage] = useState("");
+const Edit = (): JSX.Element => {
+  const [title, setTitle] = useState<string>("");
+  const [text, setText] = useState<string>("");
+  const [oldImage, setOldImage] = useState<string>("");
   const [newImage, setNewImage] = useState<File | null>(null);
 
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ const Edit = () => {
     setOldImage(data.imgUrl);
   }, [params.id]);
 
-  const submitHandler = () => {
+  const submitHandler = (): void => {
     try {
       const updatedPost = new FormData();
       updatedPost.append("title", title);
@@ -43,12 +43,12 @@ const Edit = () => {
     }
   };
 
-  const clearFormHandler = () => {
+  const clearFormHandler = (): void => {
     setTitle("");
     setText("");
   };
 
-  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>): void => {
     if (e.target.files && e.target.files.length > 0) {
       setNewImage(e.target.files[0]);
       setOldImage("");

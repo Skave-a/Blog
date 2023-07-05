@@ -15,18 +15,18 @@ import { toast } from "react-toastify";
 import { createComment, getPostComments } from "@/redux/slices/commentSlice";
 import { CommentItem } from "@/components";
 
-const Post = () => {
+const Post = (): JSX.Element => {
   const [post, setPost] = useState<typePost | null>(null);
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState<string>("");
 
   const { user } = useSelector((state: RootState) => state.auth);
   const { comments } = useSelector((state: RootState) => state.comment);
-  const navigate = useNavigate();
   const { id } = useParams();
-  console.log("params", id);
+
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const removePostHandler = () => {
+  const removePostHandler = (): void => {
     try {
       id && dispatch(removePost(id));
       toast("Пост был удален");
@@ -36,7 +36,7 @@ const Post = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     try {
       if (id) {
         const postId = id;

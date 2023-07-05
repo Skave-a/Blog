@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { createPost } from "@/redux/slices/postSlice";
 import { useAppDispatch } from "@/redux/store";
 
-const AddPost: React.FC = () => {
+const AddPost: React.FC = (): JSX.Element => {
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
@@ -27,13 +27,13 @@ const AddPost: React.FC = () => {
     }
   };
 
-  const clearFormHandler = () => {
+  const clearFormHandler = (): void => {
     setText("");
     setTitle("");
     setImage(null);
   };
 
-  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>): void => {
     if (e.target.files && e.target.files.length > 0) {
       setImage(e.target.files[0]);
     }
