@@ -10,6 +10,7 @@ export const PostItem: React.FC<{ post: Post }> = ({ post }) => {
       <div className="text-xl text-center text-blue py-10">Загрузка...</div>
     );
   }
+  
   return (
     <Link to={`/${post._id}`}>
       <div className="flex flex-col basis-1/4 flex-grow">

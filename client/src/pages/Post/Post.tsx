@@ -24,10 +24,10 @@ export const Post = () => {
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useAppDispatch();
-  console.log("comments", comments);
+  
   const removePostHandler = () => {
     try {
-      params.id ? dispatch(removePost(params.id)) : null;
+      params.id && dispatch(removePost(params.id));
       toast("Пост был удален");
       navigate("/posts");
     } catch (error) {
