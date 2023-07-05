@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import axios from "@/utiles/axios";
+import { useEffect, useState } from "react";
 import { PostItem } from "@/components";
+import axios from "@/utiles/axios";
+import { Post } from "@/redux/slices/postSlice";
 
-export const Posts = () => {
-  const [posts, setPosts] = useState([]);
+const Posts = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
 
   const fetchMyPosts = async () => {
     try {
@@ -18,12 +18,11 @@ export const Posts = () => {
   useEffect(() => {
     fetchMyPosts();
   }, []);
-
   return (
     <div className="w-1/2 mx-auto py-10 flex flex-col gap-10">
-      {posts?.map((post, idx) => (
-        <PostItem post={post} key={idx} />
-      ))}
+      {posts &&
+        posts.map((post) => post && <PostItem post={post} key={post._id} />)}
     </div>
   );
 };
+export default Posts;

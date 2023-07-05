@@ -37,7 +37,7 @@ export const Navbar = () => {
       <span className="flex justify-center items-center w-6 h-6 bg-gray-600 text-xs text-white rounded-sm">
         E
       </span>
-      {isAuth && (
+      {isAuth.auth && (
         <ul className="flex gap-8">
           {MENU.map(({ name, path }) => (
             <li key={name}>
@@ -53,7 +53,7 @@ export const Navbar = () => {
         </ul>
       )}
       <div className="bg-indigo-500 text-white py-2 text-sm px-3 rounded focus:outline-none">
-        {isAuth ? (
+        {isAuth.auth ? (
           <button onClick={logoutHandler}>Выйти</button>
         ) : (
           <Link to={"/login"}> Войти </Link>

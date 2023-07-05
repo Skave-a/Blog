@@ -5,9 +5,9 @@ import { checkIsAuth, registerUser } from "@/redux/slices/authSlice";
 import { toast } from "react-toastify";
 import { RootState, useAppDispatch } from "@/redux/store";
 
-export const Register = () => {
-  const [usermail, setUsermail] = useState("");
-  const [password, setPassword] = useState("");
+const Register = () => {
+  const [usermail, setUsermail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const { status } = useSelector((state: RootState) => state.auth);
   const isAuth = useSelector(checkIsAuth);
 
@@ -18,7 +18,7 @@ export const Register = () => {
     if (status) {
       toast(status);
     }
-    if (isAuth) navigate("/");
+    if (isAuth.auth) navigate("/");
   }, [status, isAuth, navigate]);
 
   const handleSubmit = () => {
@@ -111,3 +111,4 @@ export const Register = () => {
     </>
   );
 };
+export default Register;

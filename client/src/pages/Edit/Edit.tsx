@@ -10,7 +10,7 @@ import axios, { baseURL } from "@/utiles/axios";
 import { ExtendedFormData, updatePost } from "@/redux/slices/postSlice";
 import { useAppDispatch } from "@/redux/store";
 
-export const Edit = () => {
+const Edit = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [oldImage, setOldImage] = useState("");
@@ -69,9 +69,7 @@ export const Edit = () => {
         <input type="file" className="hidden" onChange={handleImageChange} />
       </label>
       <div className="flex object-cover py-2">
-        {oldImage && (
-          <img src={`${baseURL}/${oldImage}`} alt={oldImage} />
-        )}
+        {oldImage && <img src={`${baseURL}/${oldImage}`} alt={oldImage} />}
         {newImage && (
           <img src={URL.createObjectURL(newImage)} alt={newImage.name} />
         )}
@@ -120,3 +118,5 @@ export const Edit = () => {
     </form>
   );
 };
+
+export default Edit;

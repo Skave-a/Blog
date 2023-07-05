@@ -1,17 +1,18 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "@/redux/slices/postSlice";
 import { useAppDispatch } from "@/redux/store";
 
-export const AddPost = () => {
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
+const AddPost: React.FC = () => {
+  const [title, setTitle] = useState<string>("");
+  const [text, setText] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const submitHandler = () => {
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
     try {
       const data = new FormData();
       data.append("title", title);
@@ -87,3 +88,5 @@ export const AddPost = () => {
     </form>
   );
 };
+
+export default AddPost;

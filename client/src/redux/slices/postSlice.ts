@@ -71,7 +71,6 @@ export const removePost = createAsyncThunk(
 export const updatePost = createAsyncThunk(
   "post/updatePost",
   async (updatedPost: ExtendedFormData) => {
-    console.log("updatedPost", updatedPost);
     try {
       const { data } = await axios.put(`/posts/${updatedPost.id}`, updatedPost);
       return data;

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { RootState, useAppDispatch } from "@/redux/store";
 import { checkIsAuth, loginUser } from "@/redux/slices/authSlice";
 
-export const Login = () => {
+const Login = () => {
   const [usermail, setUsermail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,7 +16,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (status) toast(status);
-    if (isAuth) navigate("/");
+    if (isAuth.auth) navigate("/");
   }, [status, isAuth, navigate]);
 
   const handleSubmit = () => {
@@ -106,3 +106,5 @@ export const Login = () => {
     </>
   );
 };
+
+export default Login;

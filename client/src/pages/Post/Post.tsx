@@ -15,19 +15,20 @@ import { toast } from "react-toastify";
 import { createComment, getPostComments } from "@/redux/slices/commentSlice";
 import { CommentItem } from "@/components";
 
-export const Post = () => {
+const Post = () => {
   const [post, setPost] = useState<typePost | null>(null);
   const [comment, setComment] = useState("");
 
   const { user } = useSelector((state: RootState) => state.auth);
   const { comments } = useSelector((state: RootState) => state.comment);
   const navigate = useNavigate();
-  const params = useParams();
+  const { id } = useParams();
+  console.log("params", id);
   const dispatch = useAppDispatch();
-  
+
   const removePostHandler = () => {
     try {
-      params.id && dispatch(removePost(params.id));
+      id && dispatch(removePost(id));
       toast("Пост был удален");
       navigate("/posts");
     } catch (error) {
@@ -37,8 +38,8 @@ export const Post = () => {
 
   const handleSubmit = () => {
     try {
-      if (params.id) {
-        const postId = params.id;
+      if (id) {
+        const postId = id;
         dispatch(createComment({ postId, comment }));
         setComment("");
       }
@@ -49,18 +50,18 @@ export const Post = () => {
 
   const fetchComments = useCallback(async () => {
     try {
-      if (params.id) {
-        dispatch(getPostComments(params.id));
+      if (id) {
+        dispatch(getPostComments(id));
       }
     } catch (error) {
       console.log(error);
     }
-  }, [params.id, dispatch]);
+  }, [id, dispatch]);
 
   const fetchPost = useCallback(async () => {
-    const { data } = await axios.get(`/posts/${params.id}`);
+    const { data } = await axios.get(`/posts/${id}`);
     setPost(data);
-  }, [params.id]);
+  }, [id]);
 
   useEffect(() => {
     fetchPost();
@@ -126,7 +127,7 @@ export const Post = () => {
             {typeof user === "object" && user?._id === post.author && (
               <div className="flex gap-3 mt-4">
                 <button className="flex items-center justify-center gap-2 text-blue opacity-50">
-                  <Link to={`/${params.id}/edit`}>
+                  <Link to={`/${id}/edit`}>
                     <AiTwotoneEdit />
                   </Link>
                 </button>
@@ -158,11 +159,11 @@ export const Post = () => {
             </button>
           </form>
 
-          {comments?.map((cmt) => (
-            <CommentItem key={cmt._id} cmt={cmt} />
-          ))}
+          {comments &&
+            comments.map((cmt) => <CommentItem key={cmt._id} cmt={cmt} />)}
         </div>
       </div>
     </div>
   );
 };
+export default Post;

@@ -163,7 +163,30 @@ export const authSlice = createSlice({
   },
 });
 
-export const checkIsAuth = (state: RootState) => Boolean(state.auth.token);
+type CheckIsAuthResult = {
+  auth: boolean;
+  isLoading: boolean;
+};
+
+let previousResult: CheckIsAuthResult | null = null;
+
+export const checkIsAuth = (state: RootState) => {
+  if (
+    previousResult !== null &&
+    previousResult.auth === Boolean(state.auth.token) &&
+    previousResult.isLoading === state.auth.isLoading
+  ) {
+    return previousResult;
+  }
+
+  const result = {
+    auth: Boolean(state.auth.token),
+    isLoading: state.auth.isLoading,
+  };
+
+  previousResult = result;
+  return result;
+};
 
 export const { logout } = authSlice.actions;
 export default authSlice.reducer;

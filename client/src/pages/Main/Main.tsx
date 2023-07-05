@@ -3,16 +3,18 @@ import { RootState, useAppDispatch } from "@/redux/store";
 import { useEffect } from "react";
 import { getAllPosts } from "@/redux/slices/postSlice";
 import { PopularPosts, PostItem } from "@/components";
+import { checkIsAuth } from "@/redux/slices/authSlice";
 
-export const Main = () => {
+const Main = () => {
   const dispatch = useAppDispatch();
   const { posts, popularPosts } = useSelector((state: RootState) => state.post);
+  const isAuth = useSelector(checkIsAuth);
 
   useEffect(() => {
     dispatch(getAllPosts());
   }, [dispatch]);
 
-  if (!posts.length) {
+  if (!isAuth.auth && !posts.length) {
     return (
       <div className="text-xl text-center text-white py-10">
         Постов не существует.
@@ -39,3 +41,4 @@ export const Main = () => {
     </div>
   );
 };
+export default Main;

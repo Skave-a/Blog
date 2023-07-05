@@ -1,11 +1,11 @@
-import { Layout } from "@/components";
 import "./index.css";
-import { Routing } from "@/pages/route";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Layout } from "@/components";
+import { ToastContainer } from "react-toastify";
 import { useAppDispatch } from "@/redux/store";
 import { useEffect } from "react";
 import { getMe } from "@/redux/slices/authSlice";
+import AppRouter from "@/app/providers/router/ui/AppRouter";
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ export const App = () => {
 
   return (
     <Layout>
-      <Routing />
+      <AppRouter />
       <ToastContainer
         position="top-right"
         autoClose={5000}

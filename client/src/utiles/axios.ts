@@ -6,7 +6,6 @@ export const baseURL = "https://blog-client-nu-nine.onrender.com";
 
 const instance = axios.create({
   baseURL: `${baseURL}/api`,
-
 });
 
 instance.interceptors.request.use((config) => {
