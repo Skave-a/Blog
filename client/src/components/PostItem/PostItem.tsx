@@ -38,7 +38,9 @@ export const PostItem: React.FC<{ post: Post }> = ({ post }) => {
           <BsCalendarEvent />
           {formatDate(post.createdAt)}
         </div>
-        <div className="text-blue text-xl hover:text-menuСolor">{post.title}</div>
+        <div className="text-blue text-xl hover:text-menuСolor">
+          {post.title}
+        </div>
         <div className="text-xs text-blue opacity-50">{post.usermail}</div>
         <p className="text-blue opacity-60 text-xs pt-4 line-clamp-4">
           {post.text}

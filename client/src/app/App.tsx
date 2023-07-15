@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { getMe } from "@/redux/slices/authSlice";
 import AppRouter from "@/app/providers/router/ui/AppRouter";
 
-const App = (): JSX.Element => {
+const App = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
