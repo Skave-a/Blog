@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import { checkIsAuth, logout } from "@/redux/slices/authSlice";
 import { useAppDispatch } from "@/redux/store";
 import { toast } from "react-toastify";
+import { BsMoonStars } from "react-icons/bs";
+import { GoSignIn, GoSignOut } from "react-icons/go";
 
 const MENU = [
   {
@@ -21,7 +23,7 @@ const MENU = [
 
 export const Navbar = (): JSX.Element => {
   const activeStyle = {
-    color: "#000000",
+    color: "#f08e80",
   };
   const dispatch = useAppDispatch();
   const isAuth = useSelector(checkIsAuth);
@@ -34,17 +36,18 @@ export const Navbar = (): JSX.Element => {
 
   return (
     <div className="flex py-4 justify-between items-center">
-      <span className="flex justify-center items-center w-6 h-6 bg-gray-600 text-xs text-white rounded-sm">
-        E
-      </span>
+      <Link to={"/"} className="text-3xl font-bold cursor-pointer">
+        Posts
+      </Link>
+
       {isAuth.auth && (
         <ul className="flex gap-8">
           {MENU.map(({ name, path }) => (
             <li key={name}>
               <NavLink
                 to={path}
-                className="text-xs text-gray-400 hover:text-black"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                className="text-xs menuСolor px-4 py-2 rounded ease-out duration-300 hover:bg-lightPink hover:text-menuСolor"
               >
                 {name}
               </NavLink>
@@ -52,12 +55,18 @@ export const Navbar = (): JSX.Element => {
           ))}
         </ul>
       )}
-      <div className="bg-indigo-500 text-white py-2 text-sm px-3 rounded focus:outline-none">
-        {isAuth.auth ? (
-          <button onClick={logoutHandler}>Выйти</button>
-        ) : (
-          <Link to={"/login"}> Войти </Link>
-        )}
+      <div className="flex items-center gap-4">
+        <BsMoonStars className="cursor-pointer" />
+        {/* <div className="bg-indigo-500 text-white py-2 text-sm px-3 rounded focus:outline-none"> */}
+        <div>
+          {isAuth.auth ? (
+            <GoSignOut onClick={logoutHandler} className="cursor-pointer" />
+          ) : (
+            <Link to={"/login"}>
+              <GoSignIn />
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

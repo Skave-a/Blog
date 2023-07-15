@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 export const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-20">
         <Navbar />
         {children}
       </div>

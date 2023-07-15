@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.scss";
 import "react-toastify/dist/ReactToastify.css";
 import { Layout } from "@/components";
 import { ToastContainer } from "react-toastify";

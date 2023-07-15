@@ -1,0 +1,13 @@
+@import "styles/variables/global";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+
+@layer base {
+  body {
+    font-family: "Poppins", sans-serif;
+    background: var(--background-color);
+    min-height: 100vh;
+  }
+}
