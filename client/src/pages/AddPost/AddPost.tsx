@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createPost } from "@/redux/slices/postSlice";
+import { createPost } from "@/features/Post/slices/postSlice";
 import { useAppDispatch } from "@/redux/store";
 
 const AddPost: React.FC = (): JSX.Element => {

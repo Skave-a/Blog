@@ -1,4 +1,4 @@
-import { Post } from "@/redux/slices/postSlice";
+import { Post } from "@/features/Post/slices/postSlice";
 import { Link } from "react-router-dom";
 
 export const PopularPosts: React.FC<{ post: Post }> = ({ post }) => {

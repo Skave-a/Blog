@@ -4,30 +4,7 @@ import {
   ActionReducerMapBuilder,
 } from "@reduxjs/toolkit";
 import axios from "@/utiles/axios";
-
-export type Post = {
-  author: string;
-  comments: string[];
-  createdAt: string;
-  imgUrl: string;
-  text: string;
-  title: string;
-  updatedAt: string;
-  usermail: string;
-  views: number;
-  __v: number;
-  _id: string;
-};
-
-export interface PostState {
-  posts: Post[];
-  popularPosts: Post[];
-  loading: boolean;
-}
-
-export interface ExtendedFormData extends FormData {
-  id: string;
-}
+import { ExtendedFormData, PostState } from "../types";
 
 const initialState: PostState = {
   posts: [],

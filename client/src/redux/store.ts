@@ -1,8 +1,10 @@
 import { useDispatch } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice, { AuthState } from "@/redux/slices/authSlice";
-import postSlice, { PostState } from "./slices/postSlice";
-import commentSlice, { CommentState } from "./slices/commentSlice";
+import postSlice from "@/features/Post/slices/postSlice";
+import commentSlice from "@/features/Comment/slices/commentSlice";
+import { PostState } from "@/features/Post/types";
+import { CommentState } from "@/features/Comment/types";
 
 export interface RootState {
   auth: AuthState;

@@ -1,11 +1,11 @@
 import "./index.scss";
 import "react-toastify/dist/ReactToastify.css";
-import { Layout } from "@/components";
 import { ToastContainer } from "react-toastify";
 import { useAppDispatch } from "@/redux/store";
 import { useEffect } from "react";
 import { getMe } from "@/redux/slices/authSlice";
 import AppRouter from "@/app/providers/router/ui/AppRouter";
+import { Layout } from "./Layout";
 
 const App = () => {
   const dispatch = useAppDispatch();

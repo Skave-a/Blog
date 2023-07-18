@@ -1,18 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "@/utiles/axios";
-
-export interface Comment {
-  comment: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-  _id: string;
-}
-
-export interface CommentState {
-  comments: Comment[];
-  loading: boolean;
-}
+import { CommentState, Comment } from "../types";
 
 const initialState: CommentState = {
   comments: [],

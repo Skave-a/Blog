@@ -5,6 +5,7 @@ import { useAppDispatch } from "@/redux/store";
 import { toast } from "react-toastify";
 import { BsMoonStars } from "react-icons/bs";
 import { GoSignIn, GoSignOut } from "react-icons/go";
+import React from "react";
 
 const MENU = [
   {
@@ -21,7 +22,7 @@ const MENU = [
   },
 ];
 
-export const Navbar = (): JSX.Element => {
+const Navbar = (): React.JSX.Element => {
   const activeStyle = {
     color: "#f08e80",
   };
@@ -71,3 +72,5 @@ export const Navbar = (): JSX.Element => {
     </div>
   );
 };
+
+export default Navbar;

@@ -1,6 +1,6 @@
 import styles from "./spinner.module.css";
 
-export function Spinner(): JSX.Element {
+export function Spinner(): React.JSX.Element {
   return (
     <div className={styles["lds-ring"]}>
       <div />

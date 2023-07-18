@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { Post } from "@/redux/slices/postSlice";
 import { AiFillEye, AiOutlineMessage } from "react-icons/ai";
 import { formatDate } from "@/utiles/formateDate";
 import { baseURL } from "@/utiles/axios";
 import { BsCalendarEvent } from "react-icons/bs";
+import { PostType } from "../types";
 
-export const PostItem: React.FC<{ post: Post }> = ({ post }) => {
+export const PostItem: React.FC<{ post: PostType }> = ({ post }) => {
   if (!post) {
     return (
       <div className="text-xl text-center text-blue py-10">Загрузка...</div>
@@ -15,7 +15,7 @@ export const PostItem: React.FC<{ post: Post }> = ({ post }) => {
   return (
     <div className="flex flex-col basis-1/4 flex-grow w-[390px]">
       <div className="bg-white rounded-sm h-60 relative">
-        <Link to={`/${post._id}/:${post.title}`}>
+        <Link to={`post/${post._id}`}>
           <div
             className={
               post.imgUrl

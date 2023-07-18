@@ -7,7 +7,7 @@ import {
 } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios, { baseURL } from "@/utiles/axios";
-import { ExtendedFormData, updatePost } from "@/redux/slices/postSlice";
+import { ExtendedFormData, updatePost } from "@/features/Post/slices/postSlice";
 import { useAppDispatch } from "@/redux/store";
 
 const Edit = (): JSX.Element => {

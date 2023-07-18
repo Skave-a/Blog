@@ -1,0 +1,16 @@
+import { withReactContext } from 'storybook-react-context';
+
+export default {
+  title: 'some story',
+  decorators: [withReactContext],
+};
+
+export default {
+  title: 'some story',
+  decorators: [
+    withReactContext({
+      Context: ExampleContext,
+      initialState: { authenticated: false },
+    }),
+  ],
+};

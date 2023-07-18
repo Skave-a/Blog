@@ -10,17 +10,19 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { RootState, useAppDispatch } from "@/redux/store";
 import axios, { baseURL } from "@/utiles/axios";
 import { formatDate } from "@/utiles/formateDate";
-import { removePost, Post as typePost } from "@/redux/slices/postSlice";
 import { toast } from "react-toastify";
-import { createComment, getPostComments } from "@/redux/slices/commentSlice";
-import { CommentItem } from "@/components";
+import {
+  createComment,
+  getPostComments,
+} from "@/features/Comment/slices/commentSlice";
+import { CommentsList, removePost } from "@/features";
+import { PostType } from "@/features/Post/types";
 
-const Post = (): JSX.Element => {
-  const [post, setPost] = useState<typePost | null>(null);
+const Post: React.FC = (): React.JSX.Element => {
+  const [post, setPost] = useState<PostType | null>(null);
   const [comment, setComment] = useState<string>("");
 
   const { user } = useSelector((state: RootState) => state.auth);
-  const { comments } = useSelector((state: RootState) => state.comment);
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -76,6 +78,8 @@ const Post = (): JSX.Element => {
       <div className="text-xl text-center text-blue py-10">Загрузка...</div>
     );
   }
+
+  if (!("_id" in post)) return <p>Такого поста не существует</p>;
 
   return (
     <div>
@@ -158,9 +162,7 @@ const Post = (): JSX.Element => {
               Отправить
             </button>
           </form>
-
-          {comments &&
-            comments.map((cmt) => <CommentItem key={cmt._id} cmt={cmt} />)}
+          <CommentsList />
         </div>
       </div>
     </div>

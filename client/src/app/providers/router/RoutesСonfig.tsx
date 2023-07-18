@@ -61,7 +61,7 @@ export const defaultRoutes: RouteConfig[] = [
   },
   {
     uuid: uuidv4(),
-    path: ":id/:title",
+    path: "post/:id",
     element: () => (
       <ProtectedRoute mode={AccessMode.Always}>
         <Post />

@@ -1,4 +1,4 @@
-import { Comment } from "@/redux/slices/commentSlice";
+import { Comment } from "@/features/Comment/types";
 
 export const CommentItem = ({ cmt }: { cmt: Comment }) => {
   const avatar = cmt.comment.trim().toUpperCase().split("").slice(0, 2);

@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { defaultRoutes } from "../RoutesСonfig";
 import { Spinner } from "@/shared/ui";
 
-const AppRouter: React.FC = (): JSX.Element => {
+const AppRouter: React.FC = (): React.JSX.Element => {
   return (
     <Suspense fallback={<Spinner />}>
       <Routes>
