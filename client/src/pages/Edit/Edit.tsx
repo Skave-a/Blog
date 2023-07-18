@@ -7,8 +7,9 @@ import {
 } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios, { baseURL } from "@/utiles/axios";
-import { ExtendedFormData, updatePost } from "@/features/Post/slices/postSlice";
+import { updatePost } from "@/features/Post/slices/postSlice";
 import { useAppDispatch } from "@/redux/store";
+import { ExtendedFormData } from "@/features/Post/types";
 
 const Edit = (): JSX.Element => {
   const [title, setTitle] = useState<string>("");

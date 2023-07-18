@@ -1,7 +1,7 @@
-import { Post } from "@/features/Post/slices/postSlice";
 import { Link } from "react-router-dom";
+import { PostType } from "../types";
 
-export const PopularPosts: React.FC<{ post: Post }> = ({ post }) => {
+export const PopularPosts: React.FC<{ post: PostType }> = ({ post }) => {
   return (
     <div className="bg-gray-600 my-1">
       <Link
