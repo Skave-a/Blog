@@ -3,7 +3,7 @@
 
 in developing...
 
-demo - https://blog-client-nu-nine.vercel.app/ 
+demo - [https://blog-client-nu-nine.vercel.app/ ](https://blog-skave-a.netlify.app/)
 
 |Frontend                        |Backend                      |
 |-------------------------|-----------------------|
