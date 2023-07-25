@@ -3,7 +3,7 @@ import { RootState, useAppDispatch } from "@/redux/store";
 import { useEffect } from "react";
 import { getAllPosts } from "@/features/Post/slices/postSlice";
 import { checkIsAuth } from "@/redux/slices/authSlice";
-import { PopularPostsList, PostsList } from "@/features/Post";
+import { PostsList } from "@/features/Post";
 
 const Main: React.FC = (): React.JSX.Element => {
   const dispatch = useAppDispatch();
