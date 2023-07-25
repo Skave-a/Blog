@@ -13,7 +13,7 @@ export const PostItem: React.FC<{ post: PostType }> = ({ post }) => {
   }
 
   return (
-    <div className="flex flex-col basis-1/4 flex-grow w-[390px]">
+    <div className="group/item flex flex-col basis-1/4 flex-grow w-[390px]">
       <div className="bg-white rounded-sm h-60 relative">
         <Link to={`post/${post._id}`}>
           <div
@@ -31,7 +31,7 @@ export const PostItem: React.FC<{ post: PostType }> = ({ post }) => {
                     : `${baseURL}/${post.imgUrl}`
                 }
                 alt="img"
-                className="object-cover w-full filter grayscale hover:filter-none ease-out duration-300 rounded-sm"
+                className="object-cover w-full filter grayscale hover:filter-none ease-out duration-300 rounded-sm group-hover/item:filter-none"
               />
             )}
           </div>
@@ -42,9 +42,11 @@ export const PostItem: React.FC<{ post: PostType }> = ({ post }) => {
           <BsCalendarEvent />
           {formatDate(post.createdAt)}
         </div>
-        <div className="text-blue text-xl hover:text-menuСolor">
-          {post.title}
-        </div>
+        <Link to={`post/${post._id}`}>
+          <div className="text-blue text-xl hover:text-menuСolor ease-out duration-300">
+            {post.title}
+          </div>
+        </Link>
         <div className="text-xs text-blue opacity-50">{post.usermail}</div>
         <p className="text-blue opacity-60 text-xs pt-4 line-clamp-4">
           {post.text}

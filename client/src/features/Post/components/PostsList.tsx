@@ -7,7 +7,7 @@ export const PostsList: React.FC = (): React.JSX.Element => {
   const { posts } = useSelector((state: RootState) => state.post);
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-row gap-10">
       {posts?.map((post) => (
         <PostItem key={post._id} post={post} />
       ))}

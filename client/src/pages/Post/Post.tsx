@@ -99,7 +99,11 @@ const Post: React.FC = (): React.JSX.Element => {
             >
               {post?.imgUrl && (
                 <img
-                  src={`${baseURL}/${post.imgUrl}`}
+                  src={
+                    post.imgUrl.includes("https")
+                      ? post.imgUrl
+                      : `${baseURL}/${post.imgUrl}`
+                  }
                   alt="img"
                   className="object-cover w-full"
                 />

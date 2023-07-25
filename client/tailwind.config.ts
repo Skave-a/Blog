@@ -5,7 +5,7 @@ export default {
       colors: {
         lightPink: "rgba(240, 142, 128, 0.1)",
         hoverСolor: "#f08e80",
-        menuСolor: "#152035",
+        menuСolor: "#f3aca1",
       },
       fontFamily: {
         sans: ['Work Sans', 'sans-serif'],
