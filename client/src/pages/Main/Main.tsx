@@ -25,8 +25,8 @@ const Main: React.FC = (): React.JSX.Element => {
   return (
     <div className="max-w-[900px] mx-auto py-10">
       {/* <div className="flex justify-between gap-8"> */}
-        <PostsList />
-        {/* <PopularPostsList /> */}
+      <PostsList />
+      {/* <PopularPostsList /> */}
       {/* </div> */}
     </div>
   );

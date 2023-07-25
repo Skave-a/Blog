@@ -13,7 +13,7 @@ export const PostItem: React.FC<{ post: PostType }> = ({ post }) => {
   }
 
   return (
-    <div className="group/item flex flex-col min-w-[390px] w-[390px]">
+    <article className="group/item flex flex-col min-w-[390px] w-[390px] h-full mx-auto">
       <div className="bg-white rounded-sm h-60 relative">
         <Link to={`post/${post._id}`}>
           <div
@@ -61,6 +61,6 @@ export const PostItem: React.FC<{ post: PostType }> = ({ post }) => {
           </button>
         </div>
       </div>
-    </div>
+    </article>
   );
 };

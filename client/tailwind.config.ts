@@ -5,7 +5,10 @@ export default {
       colors: {
         lightPink: "rgba(240, 142, 128, 0.1)",
         hoverСolor: "#f08e80",
+        btnColor: "#f08e80",
         menuСolor: "#f3aca1",
+        btnHoverColor: "#152035",
+        bsBodyColor: "#212529",
       },
       fontFamily: {
         sans: ['Work Sans', 'sans-serif'],

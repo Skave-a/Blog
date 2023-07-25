@@ -1,9 +1,10 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "@/features/Post/slices/postSlice";
 import { useAppDispatch } from "@/redux/store";
+import { Button } from "@/shared/ui/Button/Button";
 
-const AddPost: React.FC = (): JSX.Element => {
+const AddPost: React.FC = (): React.JSX.Element => {
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
@@ -31,6 +32,7 @@ const AddPost: React.FC = (): JSX.Element => {
     setText("");
     setTitle("");
     setImage(null);
+    navigate("/");
   };
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -41,8 +43,8 @@ const AddPost: React.FC = (): JSX.Element => {
 
   return (
     <form className="w-1/3 mx-auto py-10" onSubmit={(e) => e.preventDefault()}>
-      <label className="text-gray-300 py-2 bg-gray-600 text-xs mt-2 flex items-center justify-center border-2 border-dotted cursor-pointer">
-        Прикрепить изорбажение:
+      <label className="cursor-pointer block text-center bg-btnColor hover:bg-btnHoverColor text-white py-2 px-4 rounded ease-out duration-300">
+        Прикрепить изорбажение
         <input type="file" className="hidden" onChange={handleImageChange} />
       </label>
       <div className="flex object-cover py-2">
@@ -56,7 +58,7 @@ const AddPost: React.FC = (): JSX.Element => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Заголовок"
-          className="mt-1 text-black w-full rounded-lg bg-gray-400 border py-1 px-2 text-xs outline-none placeholder:text-gray-700"
+          className="border border-gray-300 p-3 px-4 w-full text-bsBodyColor outline-none focus:border-btnColor rounded text-base placeholder:text-bsBodyColor"
         />
       </label>
 
@@ -66,24 +68,17 @@ const AddPost: React.FC = (): JSX.Element => {
           onChange={(e) => setText(e.target.value)}
           value={text}
           placeholder="Текст поста"
-          className="mt-1 text-black w-full rounded-lg bg-gray-400 border py-1 px-2 text-xs outline-none resize-none h-40 placeholder:text-gray-700"
+          rows={8}
+          className="border border-gray-300 p-3 px-4 w-full text-bsBodyColor outline-none focus:border-btnColor rounded text-base resize-none placeholder:text-bsBodyColor"
         />
       </label>
 
       <div className="flex gap-8 items-center justify-center mt-4">
-        <button
-          onClick={submitHandler}
-          className="flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-4"
-        >
-          Добавить
-        </button>
-
-        <button
-          onClick={clearFormHandler}
-          className="flex justify-center items-center bg-red-500 text-xs text-white rounded-sm py-2 px-4"
-        >
-          Отменить
-        </button>
+        <Button text={"Отменить"} onClick={clearFormHandler} />
+        <Button
+          text={"Добавить"}
+          onClick={(e: FormEvent) => submitHandler(e)}
+        />
       </div>
     </form>
   );
