@@ -1,4 +1,4 @@
-import {
+import React, {
   useEffect,
   useState,
   useCallback,
@@ -11,7 +11,7 @@ import { updatePost } from "@/features/Post/slices/postSlice";
 import { useAppDispatch } from "@/redux/store";
 import { ExtendedFormData } from "@/features/Post/types";
 
-const Edit = (): JSX.Element => {
+const Edit = (): React.JSX.Element => {
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [oldImage, setOldImage] = useState<string>("");

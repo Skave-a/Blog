@@ -25,7 +25,11 @@ export const PostItem: React.FC<{ post: PostType }> = ({ post }) => {
           >
             {post.imgUrl && (
               <img
-                src={`${baseURL}/${post.imgUrl}`}
+                src={
+                  post.imgUrl.includes("https")
+                    ? post.imgUrl
+                    : `${baseURL}/${post.imgUrl}`
+                }
                 alt="img"
                 className="object-cover w-full filter grayscale hover:filter-none ease-out duration-300 rounded-sm"
               />
