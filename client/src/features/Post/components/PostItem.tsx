@@ -13,13 +13,13 @@ export const PostItem: React.FC<{ post: PostType }> = ({ post }) => {
   }
 
   return (
-    <div className="group/item flex flex-col basis-1/4 flex-grow w-[390px]">
+    <div className="group/item flex flex-col min-w-[390px] w-[390px]">
       <div className="bg-white rounded-sm h-60 relative">
         <Link to={`post/${post._id}`}>
           <div
             className={
               post.imgUrl
-                ? "flex rounded-sm  absolute -top-5 h-60 left-4 hover:-top-6 ease-out duration-300 "
+                ? "flex rounded-sm  absolute -top-5 h-60 left-4 hover:-top-6 ease-out duration-300 group-hover/item:-top-6"
                 : "flex rounded-sm"
             }
           >
