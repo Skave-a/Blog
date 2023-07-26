@@ -1,0 +1,17 @@
+import type { Meta, StoryFn } from "@storybook/react";
+import Comments from "./Comments";
+
+const meta = {
+  title: "shared/Comments",
+  component: Comments,
+} satisfies Meta<typeof Comments>;
+
+export default meta;
+
+const Template: StoryFn<{ id: string }> = (props) => <Comments {...props} />;
+
+export const Primary = Template.bind({});
+
+Primary.args = {
+  id: "2",
+};

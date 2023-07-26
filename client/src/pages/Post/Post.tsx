@@ -11,16 +11,14 @@ import { RootState, useAppDispatch } from "@/redux/store";
 import axios, { baseURL } from "@/utiles/axios";
 import { formatDate } from "@/utiles/formateDate";
 import { toast } from "react-toastify";
-import {
-  createComment,
-  getPostComments,
-} from "@/features/Comment/slices/commentSlice";
-import { CommentsList, removePost } from "@/features";
+import { getPostComments } from "@/features/Comment/slices/commentSlice";
+import { removePost } from "@/features";
 import { PostType } from "@/features/Post/types";
+import { Button } from "@/shared/ui/Button/Button";
+import Comments from "@/features/Comment/components/Comments";
 
 const Post: React.FC = (): React.JSX.Element => {
   const [post, setPost] = useState<PostType | null>(null);
-  const [comment, setComment] = useState<string>("");
 
   const { user } = useSelector((state: RootState) => state.auth);
   const { id } = useParams();
@@ -33,18 +31,6 @@ const Post: React.FC = (): React.JSX.Element => {
       id && dispatch(removePost(id));
       toast("Пост был удален");
       navigate("/posts");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleSubmit = (): void => {
-    try {
-      if (id) {
-        const postId = id;
-        dispatch(createComment({ postId, comment }));
-        setComment("");
-      }
     } catch (error) {
       console.log(error);
     }
@@ -83,18 +69,13 @@ const Post: React.FC = (): React.JSX.Element => {
 
   return (
     <div>
-      <button className="flex justify-center items-center bg-gray-600 text-xs text-blue rounded-sm py-2 px-4">
-        <Link className="flex" to={"/"}>
-          Назад
-        </Link>
-      </button>
-
-      <div className="flex gap-10 py-8">
-        <div className="w-2/3">
+      <Button text="Назад" onClick={() => navigate("/")} />
+      <div className="flex flex-wrap flex-row justify-around gap-10 py-8">
+        <div>
           <div className="flex flex-col basis-1/4 flex-grow">
             <div
               className={
-                post?.imgUrl ? "flex rouded-sm h-80" : "flex rounded-sm"
+                post?.imgUrl ? "flex rouded-sm h-96" : "flex rounded-sm"
               }
             >
               {post?.imgUrl && (
@@ -149,25 +130,7 @@ const Post: React.FC = (): React.JSX.Element => {
             )}
           </div>
         </div>
-        <div className="w-1/3 p-8 bg-gray-700 flex flex-col gap-2 rounded-sm">
-          <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="text"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              placeholder="Comment"
-              className="text-black w-full rounded-sm bg-gray-400 border p-2 text-xs outline-none placeholder:text-gray-700"
-            />
-            <button
-              type="submit"
-              onClick={handleSubmit}
-              className="flex justify-center items-center bg-gray-600 text-xs text-blue rounded-sm py-2 px-4"
-            >
-              Отправить
-            </button>
-          </form>
-          <CommentsList />
-        </div>
+        {id && <Comments id={id} />}
       </div>
     </div>
   );

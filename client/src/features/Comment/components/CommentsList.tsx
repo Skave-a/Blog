@@ -10,8 +10,9 @@ export const CommentsList: React.FC = (): React.JSX.Element => {
 
   return (
     <>
-      {comments &&
-        comments.map((cmt) => <CommentItem key={cmt._id} cmt={cmt} />)}
+      {comments?.map((cmt) => (
+        <CommentItem key={cmt._id} cmt={cmt} />
+      ))}
     </>
   );
 };
