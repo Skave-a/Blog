@@ -23,7 +23,7 @@ export const PostItem: React.FC<{ post: PostType }> = ({ post }) => {
           <div
             className={
               post.imgUrl
-                ? "flex rounded-sm  absolute -top-5 h-60 left-4 hover:-top-6 ease-out duration-300 group-hover/item:-top-6"
+                ? "flex rounded-sm  absolute -top-5 md:h-60 h-56 left-4 hover:-top-6 ease-out duration-300 group-hover/item:-top-6"
                 : "flex rounded-sm"
             }
           >

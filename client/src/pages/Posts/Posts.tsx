@@ -21,8 +21,7 @@ const Posts: React.FC = (): React.JSX.Element => {
 
   return (
     <div className="w-1/2 mx-auto py-10 flex flex-col gap-10">
-      {posts &&
-        posts.map((post) => post && <PostItem post={post} key={post._id} />)}
+      {posts?.map((post) => post && <PostItem post={post} key={post._id} />)}
     </div>
   );
 };
