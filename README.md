@@ -19,3 +19,5 @@ demo - [https://blog-client-nu-nine.vercel.app/ ](https://blog-skave-a.netlify.a
 | useCallback | 
 | uuid | 
 | Storybook
+
+CI included
