@@ -13,7 +13,11 @@ export const PostItem: React.FC<{ post: PostType }> = ({ post }) => {
   }
 
   return (
-    <article className="group/item flex flex-col min-w-[390px] w-[390px] h-full mx-auto">
+    <article
+      className="group/item flex flex-col h-full mx-auto
+        sm:min-w-[290px] 
+        md:min-w-[390px] w-[390px]"
+    >
       <div className="bg-white rounded-sm h-60 relative">
         <Link to={`post/${post._id}`}>
           <div
