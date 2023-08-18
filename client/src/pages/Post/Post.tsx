@@ -72,6 +72,9 @@ const Post: React.FC = (): React.JSX.Element => {
       <Button text="Назад" onClick={() => navigate("/")} />
       <div className="flex flex-wrap flex-row justify-around gap-10 py-8">
         <div>
+
+        <div className="text-blue text-5xl mb-5">{post.title}</div>
+
           <div className="flex flex-col basis-1/4 flex-grow">
             <div
               className={
@@ -92,13 +95,15 @@ const Post: React.FC = (): React.JSX.Element => {
             </div>
           </div>
 
+          <div className="text-blue text-xl mb-5 mt-5">{post.title}</div>
+
           <div className="flex justify-between items-center pt-2">
             <div className="text-xs text-blue opacity-50">{post.usermail}</div>
             <div className="text-xs text-blue opacity-50">
               {formatDate(post.createdAt)}
             </div>
           </div>
-          <div className="text-blue text-xl">{post.title}</div>
+          
           <p className="text-blue opacity-60 text-xs pt-4 line-clamp-3">
             {post.text}
           </p>
